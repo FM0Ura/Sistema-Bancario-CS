@@ -1,0 +1,35 @@
+﻿<Window x:Class="Banco.ResgateSenhaWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Resgate de Senha" Height="300" Width="400">
+    <Grid Margin="20">
+        <StackPanel>
+            <!-- Título da Tela -->
+            <TextBlock FontSize="24" FontWeight="Bold" Text="Resgate de Senha" Margin="0,0,0,20" TextAlignment="Center"/>
+
+            <!-- Campo para Email -->
+            <TextBlock Text="Digite seu email registrado:" Margin="0,5,0,0"/>
+            <TextBox Name="txtEmail" Height="30" Margin="0,5,0,0"/>
+
+            <!-- Botão de Enviar -->
+            <Button Content="Enviar Código" 
+                    Background="Blue" 
+                    Foreground="White" 
+                    FontWeight="Bold" 
+                    Margin="0,20,0,0" 
+                    Height="40" 
+                    Click="EnviarCodigo"/>
+
+            <!-- Mensagem de retorno -->
+            <TextBlock Name="lblMensagem" Foreground="Red" Text="" Margin="0,10,0,0" TextAlignment="Center"/>
+
+            <!-- Link para voltar ao login -->
+            <TextBlock Text="Voltar ao Login" 
+                       HorizontalAlignment="Center" 
+                       Foreground="Blue" 
+                       Cursor="Hand" 
+                       Margin="0,20,0,0" 
+                       MouseDown="AbrirPaginaLogin"/>
+        </StackPanel>
+    </Grid>
+</Window>

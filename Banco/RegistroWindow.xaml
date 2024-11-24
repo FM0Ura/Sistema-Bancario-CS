@@ -1,0 +1,97 @@
+﻿<Window x:Class="Banco.RegistroClienteWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Banco"
+        mc:Ignorable="d"
+        Title="Registro de Cliente" Height="500" Width="600">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </Window.Resources>
+
+    <Grid Margin="20">
+        <StackPanel>
+            <!-- Título da Tela -->
+            <TextBlock FontSize="24" FontWeight="Bold" Text="Registro de Cliente" Margin="0,0,0,20" TextAlignment="Center"/>
+
+            <!-- Campos de Registro de Cliente -->
+            <Grid Margin="0,5,0,0">
+                <TextBox Name="txtNome" Height="30"/>
+                <TextBlock Text="Nome" 
+                           Foreground="Gray" 
+                           VerticalAlignment="Center" 
+                           Margin="5,0,0,0" 
+                           IsHitTestVisible="False"
+                           Visibility="{Binding Text.IsEmpty, ElementName=txtNome, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            </Grid>
+            <Grid Margin="0,5,0,0">
+                <TextBox Name="txtCPF" Height="30"/>
+                <TextBlock Text="CPF" 
+                           Foreground="Gray" 
+                           VerticalAlignment="Center" 
+                           Margin="5,0,0,0" 
+                           IsHitTestVisible="False"
+                           Visibility="{Binding Text.IsEmpty, ElementName=txtCPF, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            </Grid>
+            <DatePicker Name="dpDataNascimento" Margin="0,5,0,0" SelectedDateFormat="Short"/>
+
+            <Grid Margin="0,5,0,0">
+                <TextBox Name="txtEndereco" Height="30"/>
+                <TextBlock Text="Endereço" 
+                           Foreground="Gray" 
+                           VerticalAlignment="Center" 
+                           Margin="5,0,0,0" 
+                           IsHitTestVisible="False"
+                           Visibility="{Binding Text.IsEmpty, ElementName=txtEndereco, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            </Grid>
+            <Grid Margin="0,5,0,0">
+                <TextBox Name="txtTelefone" Height="30"/>
+                <TextBlock Text="Telefone" 
+                           Foreground="Gray" 
+                           VerticalAlignment="Center" 
+                           Margin="5,0,0,0" 
+                           IsHitTestVisible="False"
+                           Visibility="{Binding Text.IsEmpty, ElementName=txtTelefone, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            </Grid>
+            <Grid Margin="0,5,0,0">
+                <TextBox Name="txtEmail" Height="30"/>
+                <TextBlock Text="Email" 
+                           Foreground="Gray" 
+                           VerticalAlignment="Center" 
+                           Margin="5,0,0,0" 
+                           IsHitTestVisible="False"
+                           Visibility="{Binding Text.IsEmpty, ElementName=txtEmail, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            </Grid>
+            <Grid Margin="0,5,0,0">
+                <TextBox Name="txtSenha" Height="30"/>
+                <TextBlock Text="Senha"
+                           Foreground="Gray" 
+                           VerticalAlignment="Center" 
+                           Margin="5,0,0,0" 
+                           IsHitTestVisible="False"
+                           Visibility="{Binding Text.IsEmpty, ElementName=txtSenha, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            </Grid>
+
+            <!-- Campo para Selecionar Tipo de Conta -->
+            <TextBlock Text="Tipo de Conta" Margin="0,10,0,0"/>
+            <ComboBox Name="cbTipoConta" Margin="0,5,0,0">
+                <ComboBoxItem Content="Corrente"/>
+                <ComboBoxItem Content="Poupança"/>
+            </ComboBox>
+
+            <!-- Botão de Registro -->
+            <Button Content="Registrar" 
+        Background="Blue" 
+        Foreground="White" 
+        FontWeight="Bold" 
+        Margin="0,20,0,0" 
+        Height="40" 
+        Click="RegistrarCliente"/>
+
+            <!-- Link para Login -->
+            <TextBlock Text="Já possui uma conta?" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+            <TextBlock Text="Faça login aqui" HorizontalAlignment="Center" Foreground="Blue" Cursor="Hand" MouseDown="AbrirPaginaLogin"/>
+        </StackPanel>
+    </Grid>
+</Window>

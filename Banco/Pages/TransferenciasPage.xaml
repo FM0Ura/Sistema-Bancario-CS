@@ -1,0 +1,86 @@
+﻿<Page x:Class="Banco.TransferenciasPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Transferências">
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </Page.Resources>
+
+    <Grid Margin="20">
+        <StackPanel>
+            <!-- Título -->
+            <TextBlock Text="Transferências" FontSize="24" FontWeight="Bold" Margin="0,0,0,20"/>
+
+            <!-- Opções de Transferência -->
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,20">
+                <RadioButton x:Name="rbPix" Content="PIX" GroupName="TransferenciaTipo" IsChecked="True" Checked="OnTransferenciaTipoChanged"/>
+                <RadioButton x:Name="rbTed" Content="TED" GroupName="TransferenciaTipo" Margin="20,0,0,0" Checked="OnTransferenciaTipoChanged"/>
+            </StackPanel>
+
+            <!-- Campos para PIX -->
+            <StackPanel x:Name="pixPanel" Margin="0,0,0,20">
+                <Grid Margin="0,0,0,10">
+                    <TextBox x:Name="txtPixChave" Height="30"/>
+                    <TextBlock Text="Chave PIX (Email, Telefone ou Aleatória)" 
+                               Foreground="Gray" 
+                               VerticalAlignment="Center" 
+                               Margin="5,0,0,0"
+                               IsHitTestVisible="False"
+                               Visibility="{Binding Text.IsEmpty, ElementName=txtPixChave, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                </Grid>
+                <Grid>
+                    <TextBox x:Name="txtPixValor" Height="30"/>
+                    <TextBlock Text="Valor" 
+                               Foreground="Gray" 
+                               VerticalAlignment="Center" 
+                               Margin="5,0,0,0"
+                               IsHitTestVisible="False"
+                               Visibility="{Binding Text.IsEmpty, ElementName=txtPixValor, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                </Grid>
+            </StackPanel>
+
+            <!-- Campos para TED -->
+            <StackPanel x:Name="tedPanel" Visibility="Collapsed" Margin="0,0,0,20">
+                <Grid Margin="0,0,0,10">
+                    <TextBox x:Name="txtTedAgencia" Height="30"/>
+                    <TextBlock Text="Agência" 
+                               Foreground="Gray" 
+                               VerticalAlignment="Center" 
+                               Margin="5,0,0,0"
+                               IsHitTestVisible="False"
+                               Visibility="{Binding Text.IsEmpty, ElementName=txtTedAgencia, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                </Grid>
+                <Grid Margin="0,0,0,10">
+                    <TextBox x:Name="txtTedContaNumero" Height="30"/>
+                    <TextBlock Text="Número da Conta" 
+                               Foreground="Gray" 
+                               VerticalAlignment="Center" 
+                               Margin="5,0,0,0"
+                               IsHitTestVisible="False"
+                               Visibility="{Binding Text.IsEmpty, ElementName=txtTedContaNumero, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                </Grid>
+                <Grid Margin="0,0,0,10">
+                    <TextBox x:Name="txtTedContaDigito" Height="30"/>
+                    <TextBlock Text="Dígito da Conta" 
+                               Foreground="Gray" 
+                               VerticalAlignment="Center" 
+                               Margin="5,0,0,0"
+                               IsHitTestVisible="False"
+                               Visibility="{Binding Text.IsEmpty, ElementName=txtTedContaDigito, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                </Grid>
+                <Grid>
+                    <TextBox x:Name="txtTedValor" Height="30"/>
+                    <TextBlock Text="Valor" 
+                               Foreground="Gray" 
+                               VerticalAlignment="Center" 
+                               Margin="5,0,0,0"
+                               IsHitTestVisible="False"
+                               Visibility="{Binding Text.IsEmpty, ElementName=txtTedValor, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                </Grid>
+            </StackPanel>
+
+            <!-- Botão de Transferência -->
+            <Button Content="Transferir" Click="OnTransferirClicked" Background="Blue" Foreground="White" FontWeight="Bold" Height="40" Width="100" HorizontalAlignment="Left"/>
+        </StackPanel>
+    </Grid>
+</Page>
